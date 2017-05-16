@@ -56,7 +56,15 @@ describe 'PhaseAType' do
     end
 
     it "returns the phase type 5.2" do
-      expect(phasea_phase_type([['9H', '0D', 'JH', 'QH', 'KD']])).to eq(5.2)
+      expect(phasea_phase_type([['2S', '3C', '4C', '5S']])).to eq(5.2)
+    end
+
+    it "returns the phase type 5.2" do
+      expect(phasea_phase_type([['5D', '6H', '7D', '8H']])).to eq(5.2)
+    end
+
+    it "returns the phase type 5.2" do
+      expect(phasea_phase_type([['5D', '6H', '7D', '8H', '9D', '0D', 'JH', 'QH', 'KD']])).to eq(5.2)
     end
 
     it 'returns nil if invalid phase 5.2' do

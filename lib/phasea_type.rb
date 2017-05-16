@@ -116,11 +116,8 @@ def phasea_phase_three(group)
     end
   end
 
-  if group.length == 4 && c_counter >= 2 && (c_counter + wilds_counter == 4)
-   3
-  else
-   nil
-  end
+  group.length == 4 && c_counter >= 2 && (c_counter + wilds_counter == 4) ? 3 : nil
+  
 end
 
 
@@ -144,7 +141,6 @@ def phasea_phase_four(group)
   sequence = nil
 
   group.each do |card|
-  
     if wilds.include?(card)
         wilds_counter += 1
         sequence += 1 unless sequence.nil?
@@ -157,11 +153,8 @@ def phasea_phase_four(group)
     end
   end
 
-  if group.length == 8 && card_counter >= 2 && (card_counter + wilds_counter == 8)
-   4
-  else
-   nil
-  end
+  group.length == 8 && card_counter >= 2 && (card_counter + wilds_counter == 8) ? 4 : nil
+
 end
 
 
@@ -204,11 +197,7 @@ sequence = nil
     end
   end
 
-  if group.length == 4 && card_counter >= 2 && (card_counter + wilds_counter == 4)
-    5.1
-  else
-    nil
-  end
+  group.length == 4 && card_counter >= 2 && (card_counter + wilds_counter == 4) && wilds_counter != 0 ? 5.1 : nil
 end
 
 # Phase 5_2
@@ -230,18 +219,23 @@ def phasea_phase_five_2(group)
   sequence = nil
   number_array = []
   suit_array = []
+  wilds_counter = 0
+
+  def array_populate
+
+  end
 
   group.each do |card|
     if sequence.nil? && deck_color.nil?
       sequence = set[card[0].to_sym] + 1
       deck_color = colors[card[1].to_sym]
       card_counter += 1
-      number_array << set[card[0].to_sym].to_i
+      number_array << set[card[0].to_sym]
       suit_array << colors[card[1].to_sym]
     elsif set[card[0].to_sym] == sequence && deck_color == colors[card[1].to_sym]
       sequence += 1
       card_counter += 1
-      number_array << set[card[0].to_sym].to_i
+      number_array << set[card[0].to_sym]
       suit_array << colors[card[1].to_sym]
     else
       number_array << set[card[0].to_sym]
@@ -261,7 +255,7 @@ def phasea_phase_type(group)
   # Phase 1 check eg. [['2S', '2S', '2H'], ['7H', '7S', '7D']]
   if group.count == 2 and
     phasea_phase_one(group[0]) == 1 and
-    phasea_phase_one(group[1]) == 1
+    phasea_phase_one(group[1]) == 1 and
     phase_type = 1
   elsif
     group.count == 1 and
@@ -282,7 +276,6 @@ def phasea_phase_type(group)
   elsif
     group.count == 1 and
     phasea_phase_five_2(group[0]) == 5.2
-
     phase_type = 5.2
   end
 
