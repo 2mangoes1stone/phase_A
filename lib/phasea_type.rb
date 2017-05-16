@@ -219,7 +219,6 @@ def phasea_phase_five_2(group)
   sequence = nil
   number_array = []
   suit_array = []
-  wilds_counter = 0
 
   group.each do |card|
     if sequence.nil? && deck_color.nil?
@@ -239,7 +238,7 @@ def phasea_phase_five_2(group)
     end
   end
 
-  number_array.each_cons(2).all? {|a, b| b == a + 1 } && suit_array.min == suit_array.max ? 5.2 : nil
+  number_array.each_cons(2).all? {|a, b| b == a + 1 } && suit_array.uniq.size == 1 ? 5.2 : nil
 
 end
 
