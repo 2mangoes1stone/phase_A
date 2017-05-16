@@ -221,10 +221,6 @@ def phasea_phase_five_2(group)
   suit_array = []
   wilds_counter = 0
 
-  def array_populate
-
-  end
-
   group.each do |card|
     if sequence.nil? && deck_color.nil?
       sequence = set[card[0].to_sym] + 1
